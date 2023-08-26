@@ -1,0 +1,80 @@
+<div class="banner">
+</div>
+
+<div class="center-info">
+  <h2 class="title page-title text-center">Головна</h2>
+</div>
+
+<div class="after-banner bg-mono">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="after-banner-item">
+          <div class="after-banner-img">
+            <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/mn-delivery-img.svg" alt=""
+              oncontextmenu="return false">
+          </div>
+          <a class="btn btn-light btn-dostavka " [routerLink]="[ '/delivery-and-payment' ]" >зони доставки</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="after-banner-item">
+          <div class="after-banner-img">
+            <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/mono-supermen.svg" alt=""
+              oncontextmenu="return false">
+          </div>
+          <div class="after-banner-info">Середній час доставки в зеленій зоні <b>00:43:00</b></div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="after-banner-item">
+          <div class="after-banner-img">
+            <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/mono-bonus.svg" alt=""
+              oncontextmenu="return false">
+          </div>
+          <div class="after-banner-info">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="rolls-type">
+  <ul class="types">
+    <li class="type select">TYPE1</li>
+    <li class="type">TYPE1</li>
+    <li class="type">TYPE1</li>
+    <li class="type">TYPE1</li>
+    <li class="type">TYPE1</li>
+    <li class="type">TYPE1</li>
+    <li class="type">TYPE1</li>
+  </ul>
+</div>
+
+<div class="products w-80% mx-auto ">
+  <div class="card product col-3 my-3 mx-3 border-animate" *ngFor="let product of products">
+    <img [src]="product.imgPath" class="image gecard-img-top">
+    <div class="card-body prod-body">
+      <h3 class="card-title" class="text-center w-100" style="font-weight: 800;">{{product.name}}</h3>
+      <div class="card-text w-100" width="height: 50px; ">
+        <p style="font-size: 20px;">{{product.description}} <span style="font-weight:700; float: right;">{{product.weight}} гр</span></p>
+      </div>
+      <div class="card-bottom">
+        <div class="bottom-card-text"><span style="font-size: 25px; font-weight: 700;">{{product.cost}} грн </span></div>
+        <div class="thumb-input-number">
+          <button type="button" class="decrement">-</button>
+          <input value="1" readonly="" class="product-qty" tabindex="-1" max="999">
+          <button type="button" class="increment">+</button>
+        </div>
+        <div class="button">
+          <a class="btn card-button">ЗАМОВИТИ</a>
+        </div>
+      </div>
+      
+      
+
+    </div>
+  </div>
+</div>
