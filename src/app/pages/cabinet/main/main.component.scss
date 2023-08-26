@@ -1,0 +1,108 @@
+
+input{
+    border: 2px solid lightgray;
+    color: black;
+    background-color: white;
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 18px;
+}
+
+input:active{
+    border: 2px solid #B5D8F7;
+    outline: none;
+}
+
+.number-title{
+    padding: 2px;
+    position: relative;
+    color: #252525;
+    border-radius: 5px;
+    margin-right: 15px;
+    background-color: #b5d8f7;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    font-style: normal;
+    text-align: center;
+    font-size: 18px;
+}
+
+.form{
+    width: 100%;
+    position: relative;
+    form{
+        .head1{
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            h5{
+                margin:0;
+                font-weight: 800;
+                font-size: 22px;
+            }
+        }
+        .inputs{
+            .full-name{
+                margin-top: 15px;
+                display: flex;
+                width: 100%;
+                justify-content: space-between;
+                input{
+                    width: 49%;
+                    height: 60px;
+
+                }
+            }
+            .contacts{
+                margin-top: 15px;
+
+                display: flex;
+                width: 100%;
+                justify-content: center;
+                input{
+                    width: 100%;
+                    height: 60px;
+
+                }
+           }
+        }
+        .head2{
+            margin-top: 70px;
+            margin-bottom: 70px;
+            display: flex;
+            align-items: center;
+            h5{
+                margin:0;
+                font-weight: 800;
+                font-size: 22px;
+            }
+        }
+        .buttons{
+            display: flex;
+            justify-content: space-between;
+            input{
+                height: 60px;
+                width: 45%;
+                border: 1px solid #B5D8F7;
+                font-size: 20px;
+                font-weight: 800;
+            }
+            .add{
+                background-color: white;
+                transition: .3s;
+            }
+            .add:hover{
+                background-color: #B5D8F7;
+            }
+            .save{
+                background-color: #B5D8F7;
+                transition: .3s;
+            }
+            .save:hover{
+                background-color: white;
+            }
+        }
+    }
+}

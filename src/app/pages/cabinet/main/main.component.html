@@ -1,0 +1,22 @@
+<div class="form">
+    <form [formGroup]="form" (submit)="editData()">
+        <div class="head1"><i class="number-title"><b>1</b></i> <h5>Особисті данні</h5></div>
+        <div class="inputs">
+            <div class="full-name">
+                <input type="text" formControlName="name" style="padding-left: 20px;"  name="fName" placeholder="*Ваше ім'я">
+                <input type="text" formControlName="sName" style="padding-left: 20px;" name="sName" placeholder="*Ваше прізвище">
+            </div>
+            <div class="contacts">
+                <input type="text" formControlName="email" style="padding-left: 20px;"  name="email" placeholder="*Ваш емейл">
+            </div>
+        </div>
+        
+        <div class="head2"><i class="number-title"><b>2</b></i><h5>Адреси</h5></div>
+        <div class="buttons">
+            <input type="button" class="add" value="ДОДАТИ АДРЕССУ" >
+            <input type="submit" class="save"  value="ЗБЕРЕГТИ ЗМІНИ">
+        </div>
+    </form>
+    
+
+</div>
