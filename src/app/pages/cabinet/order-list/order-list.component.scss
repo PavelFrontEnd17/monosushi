@@ -1,0 +1,90 @@
+*{
+    font-size: 18px;
+    color: #5a5a5a;
+}
+.no-orders{
+    margin-top: 30px;
+}
+
+.text{
+    font-size: 18px;
+}
+
+.text-link{
+    color: #B5D8F7;
+    font-weight: 600;
+}
+
+.orderNum, .date, .adress, .sum, .stat, .blank, .name, .count{
+    font-size: 18px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.orderNum{
+    width: 170px;
+    font-weight: bold;
+}
+.date{
+    width: 150px;
+}
+.adress{
+    width: 250px;
+}
+.sum{
+    width: 200px;
+}
+.status{
+    color: #25AD5F;
+    list-style-type: disc;
+    position: relative;
+    left: -12px;
+    top: 8px;
+}
+
+tbody{
+    border-top: 3px solid #B5D8F7;
+}
+tr{
+    border-top: 1px solid rgb(238, 238, 238)
+}
+b{
+    color: black;
+}
+.name{
+    position: absolute;
+}
+
+.but{
+    .repeat{
+        color: #B5D8F7;
+        font-weight: bold;
+        cursor: pointer;
+        display: block;
+        position: relative;
+
+    }
+    .repeat::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: auto;
+        right: 0;
+        height: 2px;
+        width: 0;
+        background: #b5d8f7;
+        -webkit-transition: all 0.35s ease-out;
+        transition: all 0.35s ease-out;
+    }
+    
+    .repeat:hover {
+        color: #aad1f4;
+    
+    }
+    
+    .repeat:hover::before {
+        width: 100%;
+        right: auto;
+        left: 0;
+    }
+}
+
