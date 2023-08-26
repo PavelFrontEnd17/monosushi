@@ -1,0 +1,156 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    -webkit-text-size-adjust: none;
+    font-size: 25px;
+}
+
+.text-md{
+    width: 70%;
+}
+
+.center-info {
+    text-align: center;
+    margin: 50px auto;
+    max-width: 550px;
+
+    
+
+}
+
+.title {
+    position: relative;
+    display: inline-block;
+    padding-top: 10px;
+    font-weight: 700;
+    font-size: 42px;
+}
+
+
+.text-center {
+    text-align: center;
+}
+.page-title::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+    width: 100%;
+    height: 5px;
+    background: #b5d8f7;
+}
+
+.h4 {
+    font-size: 26px;
+    line-height: 1.2em;
+}
+
+.title {
+    color: #252525;
+    font-weight: 700;
+}
+
+.delivery-info {
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .delivery-info-img {
+        margin-right: 10px;
+        max-width: 276px;
+        img {
+            width: 100%;
+        }
+    }
+    
+}
+.green{
+    .title {
+        color: #27ae60;
+    }
+    span {
+        color: #27ae60;
+    }
+}
+
+.yellow{
+    .title {
+        color: #f2c94c;
+    }
+    span {
+        color: #f2c94c;
+    }
+}
+
+.red{
+    .title {
+        color: red;
+    }
+    span {
+        color: red;
+    }
+}
+
+.text-sm {
+    font-size: 14px;
+    line-height: 1.6em;
+}
+.delivery-info-text {
+    max-width: 270px;
+}
+
+.text-center {
+    text-align: center;
+}
+.text-md{
+    margin: 50px auto;
+}
+.text-left{
+    text-align: left;
+}
+
+.pay-info-img {
+    max-width: 63px;
+    width: 100%;
+    height: 60px;
+    border-radius: 10px;
+    background: #b5d8f7;
+    position: relative;
+    margin-right: 20px;
+    img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%,-50%);
+        transform: translate(-50%,-50%);
+    }
+}
+
+.pay-info-text {
+    .title {
+        font-size: 20px;
+    line-height: 1.1em;
+    margin: 15px 0;
+    }
+}
+.pay-info-item {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    max-width: 427px;
+}
+.text-sm {
+    font-size: 16px;
+    line-height: 1.6em;
+}
+
+.pai-info {
+    justify-content: center;
+}
