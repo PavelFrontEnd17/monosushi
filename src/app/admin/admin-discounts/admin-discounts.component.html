@@ -1,0 +1,66 @@
+<div class="container d-flex">
+    <div class="form w-50">
+        <form [formGroup]="discountForm" (ngSubmit)="addDiscount()">
+            <div class="form-floating mb-3">
+                <textarea class="form-control" formControlName="name" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                <label for="floatingTextarea">Name</label>
+            </div>
+            <div class="form-floating mb-3">
+              <textarea class="form-control" formControlName="description" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+              <label for="floatingTextarea">Description</label>
+          </div>
+            <ng-container *ngIf="!IsUploded">
+
+              <div class="mb-3">
+                  <label for="formFile" class="form-label">Drag image here</label>
+                  <input class="form-control" type="file" id="formFile" (change)="upload($event)">
+              </div>
+            </ng-container>
+  
+              <ng-container *ngIf="IsUploded">
+                <div class="progress mb-3" role="progressbar" aria-label="Default striped example"  aria-valuemin="0" aria-valuemax="100">
+                  <div class="progress-bar progress-bar-striped" [style.width.%]="updatePercent"></div>
+              </div>
+                <img style="height: 100px;" [src]="valueByControl('imgPath')" alt="">
+                <button type="button" class="btn btn-danger" (click)="deleteImage()">Delete</button>
+              </ng-container>
+            <div>
+                <button class="btn btn-success w-100" type="submit" >Add</button>
+            </div>
+        </form>      
+    </div>
+    <div class="table">
+        <table class="table ms-3">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Ім'я</th>
+                <th scope="col">Опис</th>
+                <th scope="col">Картинка</th>
+                <th scope="col">Дії</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let discount of discounts">
+                <td>{{discount.id}}</td>
+                <td>{{discount.name}}</td>
+                <td>{{discount.description}}</td>
+                <td><img style="height: 100px;" [src]="discount.imgPath"></td>
+                <td>
+                  <button 
+                  (click)="editDiscount(discount)" 
+                  type="button"
+                  class="btn btn-secondary me-1"
+                  >Edit</button>
+                  <button 
+                  [disabled]="editStatus" 
+                  (click)="deleteDiscount(discount)" 
+                  type="button"
+                  class="btn btn-danger"
+                  >Delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</div>
