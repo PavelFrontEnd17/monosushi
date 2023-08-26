@@ -1,0 +1,28 @@
+<div class="main">
+    <div class="block">
+        <div class="auth-form">
+            <div class="head">
+            </div>
+            <div class="header">
+                <h2>Вхід в кабінет</h2>
+            </div>
+            <div *ngIf="logIs" class="form-body">
+                <form [formGroup]="authForm" (ngSubmit)="login()">
+                    <input type="email" formControlName="email" class="form-input" placeholder="*Email">
+                    <input type="password" formControlName="pass" class="form-input" placeholder="*Password">
+                    <div style="width: 100%; margin-top: 10px; margin-bottom: 10px; height: 40px; position: relative; display: flex; justify-content: center; align-items: center;"
+                        class="error">
+
+                        <h4 *ngIf="error" style="color: red;">Неправильний емейл або пароль</h4>
+
+                    </div>
+                    <input style="margin-top: 0;" [disabled]="authForm.invalid" type="submit" value="Увійти" class="form-input form-btn">
+                </form>
+            </div>
+            <div class="bottom">
+                <div class="sign-up bottom-links" mat-button mat-dialog-close (click)="close()" >Повернутись</div>
+            </div>
+        </div>
+    </div>
+
+</div>
