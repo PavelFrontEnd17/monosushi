@@ -1,0 +1,80 @@
+<div class="container d-flex">
+  <div class="form w-50">
+    <form [formGroup]="productForm" (ngSubmit)="addProduct()">
+      <div class="form-floating mb-3">
+        <textarea class="form-control" formControlName="name" placeholder="Leave a comment here"
+          id="floatingTextarea"></textarea>
+        <label for="floatingTextarea">Name</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input class="form-control" type="number"  formControlName="weight" placeholder="Leave a comment here" id="floatingTextarea">
+        <label for="floatingTextarea">Weight</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input class="form-control" formControlName="cost" placeholder="Leave a comment here" type="number" id="floatingTextarea">
+        <label for="floatingTextarea">Cost</label>
+      </div>
+      <div class="form-floating mb-3">
+        <textarea class="form-control" formControlName="description" placeholder="Leave a comment here"
+          id="floatingTextarea"></textarea>
+        <label for="floatingTextarea">Description</label>
+      </div>
+      
+      <select class="form-select" formControlName='category' aria-label="Default select example">
+        <option *ngFor="let category of categoryesList" (click)="selectCategory(category)" [value]="category.path">{{ category.name }}</option>
+      </select>
+      <ng-container *ngIf="!IsUploded">
+
+        <div class="mb-3">
+          <label for="formFile" class="form-label">Drag image here</label>
+          <input class="form-control" type="file" id="formFile" (change)="upload($event)">
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="IsUploded">
+        <div class="progress mb-3" role="progressbar" aria-label="Default striped example" aria-valuemin="0"
+          aria-valuemax="100">
+          <div class="progress-bar progress-bar-striped" [style.width.%]="updatePercent"></div>
+        </div>
+        <img style="height: 100px;" [src]="valueByControl('imgPath')" alt="">
+        <button type="button" class="btn btn-danger" (click)="deleteImage()">Delete</button>
+      </ng-container>
+      <div>
+             
+            <button [disabled]="productForm.invalid" class="btn btn-success w-100" type="submit">Add</button>
+      </div>
+    </form>
+  </div>
+  <div class="table">
+    <table class="table ms-3">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Ім'я</th>
+          <th scope="col">Опис</th>
+          <th scope="col">Вага</th>
+          <th scope="col">Ціна</th>
+          <th scope="col">Категорія</th>
+          <th scope="col">Картинка</th>
+          <th scope="col">Дії</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of productList">
+          <td>{{product.id}}</td>
+          <td>{{product.name}}</td>
+          <td>{{product.description}}</td>
+          <td>{{product.weight}}</td>
+          <td>{{product.cost}}</td>
+          <td>{{product.category}}</td>
+          <td><img style="height: 100px;" [src]="product.imgPath"></td>
+          <td>
+            <button (click)="editProduct(product)" type="button" class="btn btn-secondary me-1">Edit</button>
+            <button [disabled]="editStatus" (click)="deleteProduct(product)" type="button"
+              class="btn btn-danger">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
