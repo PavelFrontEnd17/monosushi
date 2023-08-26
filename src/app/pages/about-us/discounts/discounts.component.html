@@ -1,0 +1,23 @@
+<div class="center-info">
+    <h2 class="title page-title text-center">Акції</h2>
+</div>
+
+<div class="row" style="justify-content: center;">
+    <div 
+    *ngFor="let disc of userDiscounts" 
+    class="col-xl-5 col-md-6 col-6">
+        <div class="block-info">
+            <a class="block-info-link">
+                <div class="block-info-img">
+                    <img [src]="disc.imgPath"
+                        alt="" class="imgLoaded" [routerLink]="[ '/discounts/'+disc.id ]">
+                </div>
+                <h5 class="titleDiscount text-cut-2 text-center" [routerLink]="[ '/discounts/'+disc.id ]">{{disc.name}}</h5>
+            </a>
+            <div class="text-sm text-cut-3">
+            </div>
+            <hr>
+            <a class="discount-btn btn" [routerLink]="[ '/discounts/'+disc.id ]" >дізнатись більше</a>
+        </div>
+    </div>
+</div>
