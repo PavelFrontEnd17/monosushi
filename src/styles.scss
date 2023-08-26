@@ -1,1 +1,47 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('./app/shared/styles/_theme-material.scss');
+body{
+    overflow-x: hidden;
+    
+}
+
+@font-face {
+    font-family: 'Rotonda';
+    src: url(../fonts/rotondac.otf);
+
+}
+
+*{
+    font-family: 'Rotonda';
+}
+
+
+input, textarea, select {
+    border-radius: 0;
+    background: none;
+    border: none;
+    margin: 0;
+    width: 100%;
+    padding: 0;
+    -webkit-appearance: none;
+}
+
+.overflow{
+    overflow-y: hidden;
+}
+
+body::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  body::-webkit-scrollbar-track {
+    background: white;
+  }
+
+  body::-webkit-scrollbar-thumb {
+    background-color: #B5D8F7;
+  }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
