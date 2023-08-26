@@ -1,0 +1,44 @@
+
+
+.dialog{
+width: 700px;
+.center{
+input{
+    width: 80%;
+    height: 50px;
+    margin: 20px auto;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    display: block;
+    font-size: 20px;
+}
+
+input:focus-visible{
+    outline: 1px solid #B5D8F7;
+}
+
+}
+
+.bottom{
+    input{
+        width: 80%;
+        background-color: #B5D8F7;
+        border: 2px solid #B5D8F7;
+        border-radius: 10px;
+        height: 50px;
+        display: block;
+        margin: 0 auto;
+    }
+    input:hover{
+        background-color: white;
+    }
+    input:disabled{
+        background-color: lightgray;
+        border: 2px solid lightgray;
+    }
+    input:disabled:hover{
+        background-color: lightgray;
+        border: 2px solid lightgray;
+    }
+}
+}

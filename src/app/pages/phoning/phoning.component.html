@@ -1,0 +1,20 @@
+<div class="dialog" style="width: 600px;">
+
+
+    <div class="top" style="text-align: center; margin-top: 40px;">
+        <h1 style="font-weight: bolder;">МИ ЗАТЕЛЕФОНУЄМО</h1>
+        <p style="color: #5a5a5a;">Залиште номер телефону і наші менеджери</p>
+        <p style="color: #5a5a5a;">зв’яжуться з вами</p>
+    </div>
+    <div class="center">
+        <form [formGroup]="phoning">
+            <input type="text" formControlName="name">
+            <input type="text" formControlName="phone" [imask]="{mask: '{+38}(000)000-00-00'}" [unmask]="false">
+        </form>
+    </div>
+    <div class="bottom">
+        <input type="button" value="НАДІСЛАТИ" (click)="phoneMe()" mat-button mat-dialog-close [disabled]="phoning.invalid">
+    </div>
+
+
+</div>
