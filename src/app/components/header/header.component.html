@@ -1,0 +1,223 @@
+<nav class="navbar navbar-expand-lg py-0" style="width: 100%;
+position: fixed;
+top: 0;
+z-index: 10;
+background-color: white;">
+  <div class="container-fluid ps-0 pe-0 pt-0">
+    <div class="logo">
+      <a [routerLink]="[ '' ]">
+        <img class="logo-img" src="https://monosushi.com.ua/wp-content/uploads/2021/06/logo.svg">
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 categories">
+
+        <li class="nav-item category mx-1 border-animate">
+
+
+          <a class="nav-link category-link" [routerLink]="[ '/about-us/discounts' ]" routerLinkActive="router-active"
+            aria-current="page"><img class="icon"
+              src="https://monosushi.com.ua/wp-content/uploads/2020/10/nav-img-gift.svg">
+            <p class="category-text">Акції</p>
+          </a>
+          <!-- <div class="line left"></div>
+          <div class="line right"></div> -->
+        </li>
+
+        <li class="nav-item category mx-1 border-animate">
+          <a class="nav-link category-link" [routerLink]="[ '/product/rolls' ]" routerLinkActive="router-active">
+            <img class="icon" src="https://monosushi.com.ua/wp-content/uploads/2020/10/nav-img-rolls.svg">
+            <p class="category-text">Ролли</p>
+          </a>
+        </li>
+        <li class="nav-item category mx-1 border-animate">
+          <a class="nav-link category-link" [routerLink]="[ '/product/sets' ]" routerLinkActive="router-active"><img
+              class="icon" src="https://monosushi.com.ua/wp-content/uploads/2020/10/nav-img-sets.svg">
+            <p class="category-text">Сети</p>
+          </a>
+        </li>
+        <li class="nav-item category mx-1 border-animate">
+          <a class="nav-link category-link" [routerLink]="[ '/product/drinks' ]" routerLinkActive="router-active"><img
+              class="icon" src="https://monosushi.com.ua/wp-content/uploads/2020/10/nav-img-drinks.svg">
+            <p class="category-text">Напої</p>
+          </a>
+        </li>
+        <li class="nav-item category mx-1 border-animate">
+          <a class="nav-link category-link" [routerLink]="[ '/product/souses' ]" routerLinkActive="router-active"><img
+              class="icon" src="https://monosushi.com.ua/wp-content/uploads/2021/09/icon.svg">
+            <p class="category-text">Соуси</p>
+          </a>
+        </li>
+        <li class="nav-item dropdown category-burger mx-1 border-animate">
+          <a class="nav-link category-link burger p-0 dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            <svg style="margin-top: -11px;" width="64px" height="64px" viewBox="0 0 24.00 24.00" fill="none"
+              xmlns="http://www.w3.org/2000/svg" transform="rotate(0)">
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+              <g id="SVGRepo_iconCarrier">
+                <path d="M4 18L20 18" stroke="#000000" stroke-width="2.4" stroke-linecap="round"></path>
+                <path d="M4 12L20 12" stroke="#000000" stroke-width="2.4" stroke-linecap="round"></path>
+                <path d="M4 6L20 6" stroke="#000000" stroke-width="2.4" stroke-linecap="round"></path>
+              </g>
+            </svg>
+
+          </a>
+          <ul class="dropdown-menu burger-menu">
+            <svg width="50px" height="50px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+              <g id="SVGRepo_iconCarrier">
+                <path d="M19 5L4.99998 19M5.00001 5L19 19" stroke="#000000" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+              </g>
+            </svg>
+            <li><a class=" border-animate dropdown-item" [routerLink]="[ '/about-us/delivery-and-payment' ]" >Доставка та
+                оплата</a></li>
+            <li><a class=" border-animate dropdown-item" [routerLink]="[ '/about-us' ]" >Про нас</a></li>
+            <li><a class=" border-animate dropdown-item" [routerLink]="[ '/about-us/discounts' ]" > Акції</a></li>
+          </ul>
+        </li>
+
+        <li class="phone-category" (click)="tellMe()">
+          <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+              <path
+                d="M9 2C9 1.44772 9.44772 1 10 1H14C14.5523 1 15 1.44772 15 2V3C15 3.55228 14.5523 4 14 4H10C9.44772 4 9 3.55228 9 3V2Z"
+                fill="#000000"></path>
+              <rect x="5.75" y="1.75" width="12.5" height="20.5" rx="1.75" stroke="#000000" stroke-width="1.5"></rect>
+              <path d="M9 19.5H15" stroke="#000000" stroke-width="1.5" stroke-linecap="round"></path>
+            </g>
+          </svg> <span class="phone-text">МИ ЗАТЕЛЕФОНУЄМО</span>
+        </li>
+        <li class="user category float-end border-animate" *ngIf="isLogin">
+          <a class="nav-link category-link pt-2 dropdown-toggle" style="padding-bottom: 8px;"  
+          (click)="cabinetOpen()" >
+            <svg width="34px" height="34px" style="margin: 0 auto;" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+              <g id="SVGRepo_iconCarrier">
+                <path
+                  d="M17 8C17 10.7614 14.7614 13 12 13C9.23858 13 7 10.7614 7 8C7 5.23858 9.23858 3 12 3C14.7614 3 17 5.23858 17 8Z"
+                  stroke="#323232" stroke-width="2"></path>
+                <path d="M3 21C3.95728 17.9237 6.41998 17 12 17C17.58 17 20.0427 17.9237 21 21" stroke="#323232"
+                  stroke-width="2" stroke-linecap="round"></path>
+              </g>
+            </svg>
+          </a>
+          <ul class="dropdown-menu cabinet-menu" (click)="cabinetOpen()" >
+            <svg width="50px" height="50px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+              <g id="SVGRepo_iconCarrier">
+                <path d="M19 5L4.99998 19M5.00001 5L19 19" stroke="#000000" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+              </g>
+            </svg>
+            <li>
+              <a class=" border-animate dropdown-item" [routerLink]="[ '/'+loginUrl + '/' + cabinet.main]" href="#"> Осбисті данні </a>
+              <a class=" border-animate dropdown-item" [routerLink]="[ '/'+loginUrl + '/' + cabinet.orderList ]" href="#"> Історія замовлень </a>
+              <a class=" border-animate dropdown-item" [routerLink]="[ '/'+loginUrl + '/' + cabinet.passChange ]" href="#"> Змінити пароль </a>
+              <a class=" border-animate dropdown-item" [routerLink]="[ '/'+adminUrl  ]" *ngIf=" adminUrl === 'admin/' " href="#"> Адмін панель </a>
+              <a class=" border-animate dropdown-item" (click)="logOut()"> Вихід </a>
+            </li>
+          </ul>
+        </li>
+        <li class="user category float-end border-animate" *ngIf="!isLogin" >
+          <a class="nav-link category-link pt-2 " style="    padding-bottom: 8px;
+          " (click)="startLogin()" >
+            <svg width="34px" height="34px" style="margin: 0 auto;" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+              <g id="SVGRepo_iconCarrier">
+                <path
+                  d="M17 8C17 10.7614 14.7614 13 12 13C9.23858 13 7 10.7614 7 8C7 5.23858 9.23858 3 12 3C14.7614 3 17 5.23858 17 8Z"
+                  stroke="#323232" stroke-width="2"></path>
+                <path d="M3 21C3.95728 17.9237 6.41998 17 12 17C17.58 17 20.0427 17.9237 21 21" stroke="#323232"
+                  stroke-width="2" stroke-linecap="round"></path>
+              </g>
+            </svg>
+          </a>
+        </li>
+      </ul>
+
+    </div>
+    <div class="check-out">
+      <a class="basket" (click)="Click(); getSum()">
+        <div class="basket-content">
+          <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/basket.svg" class="basket-img">
+          <span class="check-out-count">{{busketCount}}</span>
+        </div>
+        <div class="check-out-sum">
+          <span style="font-family: inherit; font-weight: bold; font-size: 18px;">{{sum}}</span>
+          <span style="font-family: inherit;">грн</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</nav>
+<div class="busket-saver" style="position: fixed;" *ngIf="busket" (click)="Click()">
+
+</div>
+<div class="busket" style="position: fixed; top: 103px;" *ngIf="busket">
+  <div class="no-products" style="height: 200px; display: flex; align-items: center; justify-content: center;"
+    *ngIf="sum == 0">
+    <h1>Ви ще нічого не обрали</h1>
+  </div>
+  <div class="busket-item" *ngFor="let product of busketItems">
+
+    <div class="item-image">
+      <img [src]="product.imgPath">
+    </div>
+    <div class="item-description">
+      <h4>{{product.name}}</h4>
+    </div>
+    <div class="item-control">
+
+      <div class="thumb-input-number">
+        <button type="button" class="decrement" (click)="Count(product, false)">-</button>
+        <input [value]="product.count" readonly="" class="product-qty" tabindex="-1" max="999">
+        <button type="button" class="increment" (click)="Count(product, true)">+</button>
+      </div>
+      <div class="item-price">
+        <h4 class="item-price">
+          <p style="font-weight: 800;">{{product.cost * product.count}}</p>грн
+        </h4>
+      </div>
+      <div class="delete" (click)="delProduct(product)">
+        <svg width="40px" class="trash-can" height="64px" viewBox="0 0 24 24" fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+          <g id="SVGRepo_iconCarrier">
+            <path
+              d="M5.16565 10.1534C5.07629 8.99181 5.99473 8 7.15975 8H16.8402C18.0053 8 18.9237 8.9918 18.8344 10.1534L18.142 19.1534C18.0619 20.1954 17.193 21 16.1479 21H7.85206C6.80699 21 5.93811 20.1954 5.85795 19.1534L5.16565 10.1534Z"
+              stroke="#000000" stroke-width="2"></path>
+            <path d="M19.5 5H4.5" stroke="#000000" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M10 3C10 2.44772 10.4477 2 11 2H13C13.5523 2 14 2.44772 14 3V5H10V3Z" stroke="#000000"
+              stroke-width="2"></path>
+            <path d="M14 12V17" stroke="#000000" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M10 12V17" stroke="#000000" stroke-width="2" stroke-linecap="round"></path>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+  </div>
+  <div class="busket-footer">
+    <div class="footer-sum" *ngIf="sum>0">
+      <h2>{{sum}}грн</h2>
+    </div>
+    <div class="footer-btn" *ngIf="sum>0">
+      
+      <a (click)="Click()" [routerLink]="[ '/check-out']" class="btn footer-button">ОФОРМИТИ ЗАМОВЛЕННЯ</a>
+    </div>
+  </div>
+</div>
+<!-- 
+<div *ngIf="IsLogin" style="position: fixed;" class="auth-save">
+  <app-auth style="position: absolute; z-index: 12;"></app-auth>
+</div> -->
+
