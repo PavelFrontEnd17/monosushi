@@ -1,0 +1,71 @@
+.border-animate {
+
+    position: relative;
+    cursor: pointer;
+
+    &::before,
+    &::after {
+        content: '';
+        display: block;
+        width: 0;
+        height: 0;
+        border: 3px solid transparent;
+        border-radius: 10px;
+        position: absolute;
+        z-index: 0;
+    }
+
+    &::before {
+        top: 0;
+        left: 0;
+    }
+
+    &::after {
+        bottom: 0;
+        right: 0;
+    }
+
+    &:hover {
+
+        &::before,
+        &::after {
+            width: 100%;
+            height: 100%;
+        }
+
+        &::before {
+            border-top-color: #B5D8F7;
+            border-right-color: #B5D8F7;
+            transition: width .1s ease-out, height .1s ease-out .1s;
+
+        }
+
+        &::after {
+            border-bottom-color:
+                #B5D8F7;
+            border-left-color:
+                #B5D8F7;
+            transition: width .1s ease-out .2s, height .1s ease-out .3s;
+
+        }
+    }
+}
+
+.router-active {
+    border: 3px solid #B5D8F7;
+    border-radius: 10px;
+}
+
+
+.admin-toggler{
+    position: relative;
+    display: flex;
+    text-decoration: none;
+    color: black;
+    height: 50px;
+    width: 100px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
