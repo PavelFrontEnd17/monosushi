@@ -1,0 +1,20 @@
+<div class="container d-flex " 
+style="width: 90%;
+    margin-top: 160px;">
+    <div class="links">
+        <ul class="links-list">
+            <li class="item"><a  [routerLink]="[ 'main']"  routerLinkActive="route-active" >Особисті данні</a></li>
+            <li class="item"><a  [routerLink]="[ 'order-list']"  routerLinkActive="route-active" >Історія замовленнь</a></li>
+            <li class="item"><a  [routerLink]="[ 'change-pass']"  routerLinkActive="route-active" >Змінити пароль</a></li>
+        </ul>
+    </div>
+    <div class="container" 
+    style="margin-left: 50px; 
+    margin-top: 50px;    
+    margin-left: 50px;
+    height: 600px;
+    margin-top: 50px;
+    width: 80%;"><router-outlet></router-outlet></div>
+    
+    
+</div>
