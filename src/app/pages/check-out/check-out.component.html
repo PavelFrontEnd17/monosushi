@@ -1,0 +1,279 @@
+<div class="continer" style="width: 50%; margin: 0 auto;">
+    <div class="center-info">
+        <h2 class="title text-center">Оформити замовлення</h2>
+    </div>
+    
+        <div class=" form product-form">
+            <div class="products">
+                <div class="busket-item" *ngFor="let product of busketItems">
+
+                    <div class="item-image">
+                        <img [src]="product.imgPath">
+                    </div>
+                    <div class="item-description">
+                        <h4>{{product.name}}</h4>
+                    </div>
+                    <div class="item-control">
+
+                        <div class="thumb-input-number">
+                            <button type="button" class="decrement" (click)="Count(product, false)">-</button>
+                            <input [value]="product.count" readonly="" class="product-qty" tabindex="-1" max="999">
+                            <button type="button" class="increment" (click)="Count(product, true)">+</button>
+                        </div>
+                        <div class="item-price">
+                            <h4 class="item-price">
+                                <p style="font-weight: 800;">{{product.cost * product.count}}</p>грн
+                            </h4>
+                        </div>
+                        <div class="delete" (click)="delProduct(product)">
+                            <svg width="30px" class="trash-can" height="34px" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <path
+                                        d="M5.16565 10.1534C5.07629 8.99181 5.99473 8 7.15975 8H16.8402C18.0053 8 18.9237 8.9918 18.8344 10.1534L18.142 19.1534C18.0619 20.1954 17.193 21 16.1479 21H7.85206C6.80699 21 5.93811 20.1954 5.85795 19.1534L5.16565 10.1534Z"
+                                        stroke="#000000" stroke-width="2"></path>
+                                    <path d="M19.5 5H4.5" stroke="#000000" stroke-width="2" stroke-linecap="round">
+                                    </path>
+                                    <path d="M10 3C10 2.44772 10.4477 2 11 2H13C13.5523 2 14 2.44772 14 3V5H10V3Z"
+                                        stroke="#000000" stroke-width="2"></path>
+                                    <path d="M14 12V17" stroke="#000000" stroke-width="2" stroke-linecap="round"></path>
+                                    <path d="M10 12V17" stroke="#000000" stroke-width="2" stroke-linecap="round"></path>
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="busket-footer" style="width: 100%; border-top: 2px solid lightgray;">
+                    <div class="text" style="float: right;">
+                        <p style="font-size: 18px;">До сплати:
+                            <b style="font-size: 18px; font-weight: 900;">{{total}}</b>
+                            грн
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class=" form promo-form">
+            <div class="input-button">
+                <input type="text" class="input promo-input m-0" placeholder="Введіть промокод">
+                <button type="button" class="btn promo-btn" id="apply-coupon">
+                    Застосувати </button>
+            </div>
+        </div>
+    <form [formGroup]="checkOutForm">
+        <div class=" form cutlery-form">
+            <div class="head1"><i class="number-title"><b>1</b></i> <h5>Оберіть кількість приборів</h5></div>
+            <div class="selected">
+                <div class="select">
+                    <div class="cutlery-select selects">
+                        <select name="cutlery" formControlName="cutlery" class="selectForm" (change)="addCutleryCost($event)"  id="cutlery">
+                            <option value="null">Прибори</option>
+                            <option *ngFor="let option of cutlery"  [value]="option.count"> {{option.count}} <span *ngIf="option.count > 5">+ {{option.cost}}</span></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="select">
+                    <div class="cutlery-study  selects">
+                        <select name="study" formControlName="study"  class="selectForm" id="study">
+                            <option value="null">Навчальні тримачі</option>
+                            <option value="1" >Так</option>
+                            <option value="0" >Ні</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class=" form payment-form">
+            <div class="head1">
+                <i class="number-title"><b>2</b></i>
+                <h5>Спосіб оплати</h5>
+            </div>
+
+            <div class="payment">
+                <label class="cash" for="cash">
+                    <div class="radio">
+                        <div class="btn">
+                            <input type="radio" formControlName="payment" value="cash" name="payment" checked   id="cash">
+                        </div>
+                        <span>Готівкою</span>
+                    </div>
+                </label>
+                <label class="online" for="online">
+                    <div class="radio">
+                        <div class="btn">
+                            <input type="radio" value="online" formControlName="payment" name="payment" id="online"> 
+                        </div>
+                        <span>Безготівкова оплата</span>
+                    </div>
+                </label>
+            </div>
+
+        </div>
+        <div class=" form delivery-form">
+            <div class="head1">
+                <i class="number-title"><b>3</b></i>
+                <h5>Спосіб доставки</h5>
+            </div>
+            <div class="delivery">
+                <div class="del-top">
+                    <label for="dostavka">
+                        <div class="radio">
+                            <div class="butn">
+                                <input type="radio" value="dostavka" formControlName="dostavka" (change)="deliveryMethod($event)" checked name="dostavka" id="dostavka">
+                            </div>
+                            <span style="width:650px;">Доставка (У зв’язку із відключенням світла, якщо ліфт не працює кур’єр піднімається тільки до п’ятого поверху. Дякуємо за розуміння)</span>
+                        </div>
+                    </label>
+                </div>
+                <div class="del-bott" style="display:flex ; margin-top: 10px;">
+                    <label for="samovivoz">
+                        <div class="radio">
+                            <div class="butn">
+                                <input type="radio" value="samovivoz" formControlName="dostavka" (change)="deliveryMethod($event)" name="dostavka" id="samovivoz">
+                            </div>    
+                            <span>Самовивіз ( "Запечені моно макі з лососем" в подарунок )</span>
+                        </div>
+                    </label>
+                    <label for="zazdalegit"  style="margin-left: 10px;">
+                        <div class="radio" >
+                            <div class="butn">
+                                <input type="checkbox" (change)="changeDelTime()" formControlName="inAdvance" value="zazdalegit" name="inAdvance" id="zazdalegit">
+                            </div>    
+                            <span>Заздалегідь</span>
+                        </div>
+                    </label>
+                </div>
+
+            </div>
+        </div>
+        <div class=" form adress-form">
+            <div class="top"> 
+                <input type="text" formControlName="name"  placeholder="Ваше ім'я*" name="name"  aria-invalid="true" id="name">
+                <input 
+                type="text" 
+                placeholder="Телефон*" 
+                formControlName="phone"
+                [imask]="{mask: '{+38}(000)000-00-00'}" 
+                [unmask]="false"
+                inputmode="numeric" 
+                name="phone" 
+                id="phone">
+                <!-- <div class="error" *ngIf="_phone.invalid">Wrong phone number</div> -->
+            </div>
+            
+        </div>
+        <div class=" form info-form">
+            <div class="zazdalegit" *ngIf="zazdalegit">
+                <input 
+                matInput
+                type="text"  
+                placeholder="Дата доставки* ДД/ММ/РРРР" 
+                name="street" 
+                id="street"
+                formControlName="date"
+                [matDatepicker]="picker"
+                (change)="checkDate($event)">
+                    <mat-datepicker-toggle style="position: relative;
+                    right: 58px;
+                    top: 5px;" matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                <select name="time" formControlName="timeSpan" id="time">
+                    <option value="null">Оберіть часовий проміжок доставки</option>
+                    <option *ngFor="let item of time" (value)="item">{{item}}</option>
+                </select>
+            </div>
+            <div class="samoviviz">
+                <select name="points" *ngIf="dostavka == 'samovivoz'" formControlName='samoviviz' id="points">
+                    <option value="null" disabled>Оберіть точку cамовивозу</option>
+                    <option value="chornovola">Чорновола 95</option>
+                    <option value="volodimira">Володимира Великого 10Б</option>
+                </select>
+            </div>
+            <div class="dostavka" *ngIf="dostavka == 'dostavka'">
+                <div class="dost-top">
+                    <input type="text" placeholder="Вулиця*" formControlName="street" name="street" id="street">
+                    <input type="text" placeholder="Номер будинку*" formControlName="buildNum" name="street-num" id="street-num">
+                </div>
+                <div class="dost-bottom">
+                    <input type="text" placeholder="Під'їзд*" formControlName="entrance" name="entrance" id="entrance">
+                    <input type="text" placeholder="Квартира*" formControlName="apartNum" name="apartment" id="apartment">
+                </div>
+            </div>
+        </div>
+        <div class="comments">
+            <label for="call" class="labelComments"  style="margin-left: 10px;">
+                <div class="radio" >
+                    <div class="butn">
+                        <input type="checkbox" formControlName="call" value="call" name="call" id="call">
+                    </div>    
+                    <span>Зателефонуйте мені для уточнення деталей</span>
+                </div>
+            </label>
+            <label for="comment" class="labelComments" style="margin-left: 10px;">
+                <div class="radio" >
+                    <div class="butn">
+                        <input 
+                        type="checkbox" 
+                        (change)="commenting()" 
+                        value="comment" 
+                        name="comment" 
+                        id="comment">
+                    </div>    
+                    <span>Додати коментар</span>
+                </div>
+            </label>
+            <div class="comment" *ngIf="startComment">
+                <textarea 
+                placeholder="Коментарій*" 
+                formControlName="comment" 
+                name="comtext" 
+                id="comText" 
+                cols="30" 
+                rows="10"></textarea>
+            </div>
+            <label for="commentCook" class="labelComments"  style="margin-left: 10px;">
+                <div class="radio" >
+                    <div class="butn">
+                        <input type="checkbox" (change)="cookCommenting()" value="commentCook" name="commentCook" id="commentCook">
+                    </div>    
+                    <span>Додати коментар для кухні</span>
+                </div>
+            </label>
+            <div class="comment" *ngIf="startComCook">
+                <textarea 
+                placeholder="Коментарій для кухні*" 
+                formControlName="commentCook" 
+                name="comtext" 
+                id="comText" 
+                cols="30" 
+                rows="10"></textarea>
+            </div>
+        </div>
+        <div class="form map" style="display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 500px;">
+            <h3>Come soon...</h3>
+        </div>
+        <div class="errors form" style="height: auto;"> 
+            <div class="error" *ngIf="checkOutForm.get('name')?.invalid">Невірне ім'я</div>
+            <div class="error" *ngIf="checkOutForm.get('cutlery')?.invalid">Оберіть кількість приборів</div>
+            <div class="error" *ngIf="checkOutForm.get('study')?.invalid">Оберіть чи потрібні навчальні тримачі</div>
+            <div class="error" *ngIf="checkOutForm.get('date')?.invalid">Оберіть дату доставки</div>
+            <div class="error" *ngIf="checkOutForm.get('timeSpan')?.invalid">Оберіть часовий проміжок доставки</div>
+            <div class="error" *ngIf="
+            checkOutForm.value.dostavka != 'samovivoz' &&
+            checkOutForm.get('street')?.invalid || 
+            checkOutForm.get('buildNum')?.invalid ||
+            checkOutForm.get('entrance')?.invalid ||
+            checkOutForm.get('apartNum')?.invalid
+            ">Введіть вірну адрессу</div> 
+            <div class="error" *ngIf="checkOutForm.get('samoviviz')?.invalid">Оберіть точку самовивозу</div>
+            <div class="error" *ngIf="checkOutForm.get('phone')?.invalid">Введіть вірний телефон</div>
+        </div>
+        <div class=" form sub"> <input (click)="getOrder()" [disabled]="checkOutForm.invalid"  type="submit" class="submit" value="ОФОРМИТИ ЗАМОВЛЕННЯ"></div>
+    </form>
+</div>
