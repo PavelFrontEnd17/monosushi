@@ -1,0 +1,123 @@
+{
+  "categories": [
+    {
+      "name": "Ролли",
+      "path": "rolls",
+      "imgPath": "https://firebasestorage.googleapis.com/v0/b/monosushi-dbac9.appspot.com/o/images%2Fnav-img-rolls.svg?alt=media&token=d69a63aa-dca4-4ab1-b5de-67bdc18d1565",
+      "id": 2
+    },
+    {
+      "name": "Сети",
+      "path": "sets",
+      "imgPath": "https://firebasestorage.googleapis.com/v0/b/monosushi-dbac9.appspot.com/o/images%2Fnav-img-sets.svg?alt=media&token=b73d988c-44f6-42cb-bb75-67665ed26214",
+      "id": 3
+    },
+    {
+      "name": "Напої",
+      "path": "drinks",
+      "imgPath": "https://firebasestorage.googleapis.com/v0/b/monosushi-dbac9.appspot.com/o/images%2Fnav-img-drinks.svg?alt=media&token=e6730cb3-7c96-421e-8719-01247150d759",
+      "id": 4
+    },
+    {
+      "name": "Соуси",
+      "path": "souses",
+      "imgPath": "https://firebasestorage.googleapis.com/v0/b/monosushi-dbac9.appspot.com/o/images%2Ficon.svg?alt=media&token=bb9f874f-e0e5-4a55-a472-9622ca2cb258",
+      "id": 5
+    }
+  ],
+  "discounts": [
+    {
+      "name": "Рол тижня",
+      "description": "Рол по ціні тижня блаблаблабаалаабалабалабал",
+      "imgPath": "https://firebasestorage.googleapis.com/v0/b/monosushi-dbac9.appspot.com/o/images%2Fimgonline-com-ua-compressed-ryna9n84oqh1-scaled-697x379.jpg?alt=media&token=d756736e-a462-43aa-83e5-b8c02ca14c97",
+      "id": 1
+    },
+    {
+      "name": "3+1=5",
+      "description": "Замовляй 4 позиції і отримуй 1 на вибір у подарунок",
+      "imgPath": "https://firebasestorage.googleapis.com/v0/b/monosushi-dbac9.appspot.com/o/images%2Fimgonline-com-ua-compressed-ajbic74qfau00-scaled-697x379.jpg?alt=media&token=1bfbedea-e6f8-4df6-98ab-b3db819bf1f7",
+      "id": 2
+    },
+    {
+      "name": "Самовивіз",
+      "description": "іфвфівфіфвфівфів",
+      "imgPath": "https://firebasestorage.googleapis.com/v0/b/monosushi-dbac9.appspot.com/o/images%2Fimgonline-com-ua-compressed-pa0akdpwddstmsv1-scaled-697x379.jpg?alt=media&token=d505f8a5-fdce-4827-b069-29fc6639b19a",
+      "id": 3
+    }
+  ],
+  "products": [
+    {
+      "name": "Макі з вугрем",
+      "path": "maki-vugor",
+      "description": "Рис, норі, вугор, унагі соус",
+      "weight": 120,
+      "cost": 233,
+      "category": "rolls",
+      "imgPath": "https://firebasestorage.googleapis.com/v0/b/monosushi-dbac9.appspot.com/o/images%2F6.-maki-z-vugrem.jpg?alt=media&token=03b34efd-ab0a-495d-845b-41505cbed76e",
+      "count": 1,
+      "id": 1
+    },
+    {
+      "name": "Сет Філадельфія",
+      "path": "set-filadelfia",
+      "description": "Філадельфія: з лососем / в кунжуті / з тунцем / з вугрем",
+      "weight": 1070,
+      "cost": 1075,
+      "category": "sets",
+      "imgPath": "https://firebasestorage.googleapis.com/v0/b/monosushi-dbac9.appspot.com/o/images%2Fimgonline-com-ua-compressed-jknw6idh54664-scaled.jpg?alt=media&token=c5bfe311-e0cf-4056-9176-786e483c3029",
+      "count": 1,
+      "id": 3
+    },
+    {
+      "name": "Запечений сет",
+      "path": "zapecheny-set",
+      "description": " Запечений сирний з креветкою\nЗапечений моно з лососем",
+      "weight": 680,
+      "cost": 570,
+      "category": "sets",
+      "imgPath": "https://firebasestorage.googleapis.com/v0/b/monosushi-dbac9.appspot.com/o/images%2Fimgonline-com-ua-compressed-wnclohqe80-scaled.jpg?alt=media&token=52958f18-65eb-4383-816f-62c9eb661559",
+      "count": 1,
+      "id": 4
+    },
+    {
+      "name": "Сік яблучний “Galicia”",
+      "path": "galicia-yabluko",
+      "description": null,
+      "weight": 1,
+      "cost": 62,
+      "category": "drinks",
+      "imgPath": "https://firebasestorage.googleapis.com/v0/b/monosushi-dbac9.appspot.com/o/images%2Fyabluko.jpg?alt=media&token=4e73b8fe-6fba-4de3-a1e9-2ca25f51f25d",
+      "count": 1,
+      "id": 5
+    },
+    {
+      "name": "Імбир",
+      "path": "imbyr",
+      "description": null,
+      "weight": 30,
+      "cost": 12,
+      "category": "souses",
+      "imgPath": "https://firebasestorage.googleapis.com/v0/b/monosushi-dbac9.appspot.com/o/images%2F3333.png?alt=media&token=704c7a8a-ad13-41ed-8d76-1bb69d4c610f",
+      "count": 1,
+      "id": 6
+    }
+  ],
+  "auth": [
+    {
+      "id": 1,
+      "email": "admin@gmail.com",
+      "pass": "qwerty12345",
+      "fName": "Petro",
+      "sName": "Petriv",
+      "role": "admin"
+    },
+    {
+      "id": 2,
+      "email": "user@gmail.com",
+      "pass": "qwerty1234",
+      "fName": "Pavel",
+      "sName": "Sergeev",
+      "role": "user"
+    }
+  ]
+}
