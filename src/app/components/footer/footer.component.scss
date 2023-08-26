@@ -1,0 +1,182 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+}
+
+.text-hover{
+    transition: all 0.3s ease;
+}
+
+.text-hover:hover{
+    color: #B5D8F7;
+}
+
+strong {
+    font-weight: bold;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    font-family: inherit;
+
+}
+
+ul {
+    list-style: none;
+}
+
+footer {
+    margin-top: auto;
+    font-family: inherit;
+    height: 152.5px;
+    width: 100%;
+    border-top: 5px solid #B5D8F7;
+
+    .footer-top {
+        margin: 0 25px;
+        padding: 15px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .logo {
+            display: block;
+            width: 123px;
+            height: 46px;
+        }
+
+        .menu-footer {
+
+            display: flex;
+
+            .menu-item {
+                margin-left: 55px;
+            }
+
+        }
+
+        .footer-info {
+            max-width: 100%;
+            width: unset;
+        }
+
+        .footer-info {
+            display: flex;
+            justify-content: space-between;
+            max-width: 43%;
+            width: 100%;
+            line-height: 1.25em;
+
+            .s-delivery-address {
+                font-size: 14px;
+                line-height: 1.5em;
+                text-align: center;
+            }
+
+            .order-phone {
+                font-size: 14px;
+                line-height: 1.5em;
+                text-align: center;
+            }
+
+            .work-time {
+                font-size: 14px;
+                line-height: 1.5em;
+                text-align: center;
+            }
+        }
+    }
+
+    .footer-bottom {
+        margin: 0 25px;
+        margin-bottom: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .social,
+        .pay-cards {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .pay-card-itemf{
+                width: 56px;
+                height: 33px;
+                position: relative;
+                border: 1px solid #dcdcdc;
+                border-radius: 5px;
+                display: inline-block;
+
+                img {
+                    max-width: 30px;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
+            }
+            .pay-card-item {
+                margin-left: 5px;
+                width: 56px;
+                height: 33px;
+                position: relative;
+                border: 1px solid #dcdcdc;
+                border-radius: 5px;
+                display: inline-block;
+
+                img {
+                    max-width: 30px;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
+            }
+
+            
+        }
+
+        .social{
+            span{
+                font-size: 12px;
+                margin-right: 20px;
+            }
+            .icon-btn {
+                width: 40px;
+                height: 40px;
+                display: block;
+                width: 49px;
+                height: 49px;
+                background: #b5d8f7;
+                border: 2px solid #b5d8f7;
+                border-radius: 10px;
+                position: relative;
+                transition: all 0.3s ease;
+                img {
+                    width: 14px;
+                    height: 14px;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%,-50%);
+                }
+            }
+
+            .icon-btn:hover{
+                background-color: white;
+            }
+
+            ul{
+                display: flex;
+                li{
+                    margin-left: 5px;
+                }
+            }
+        }
+    }
+}
