@@ -1,0 +1,43 @@
+<div class="center-info">
+    <h2 class="title text-center" *ngIf="category == 'rolls'">Ролли</h2>
+    <h2 class="title text-center" *ngIf="category == 'drinks'">Напої</h2>
+    <h2 class="title text-center" *ngIf="category == 'sets'">Сети</h2>
+    <h2 class="title text-center" *ngIf="category == 'souses'">Соуси</h2>
+</div>
+
+<div class="products w-100 mx-auto ">
+  
+    <div class="card product col-3 my-3 mx-3 border-animate" *ngFor="let product of products">
+      <div class="content">
+      <div class="card-image">
+        <a class="image-link" [routerLink]="[ '/product/'+product.category + '/' + product.id ]" >
+          <img [src]="product.imgPath" class="image gecard-img-top">
+        </a>
+      </div>
+      <div class="card-body prod-body">
+        <h3 class="card-title text-center w-100" [routerLink]="[ '/product/'+product.category + '/' + product.id ]" style="font-weight: 800;">{{product.name}}</h3>
+        <div class="card-text w-100" width="height: 50px; ">
+          <p style="font-size: 20px;"  >{{product.description}} <span style="font-weight:700; float: right;">{{product.weight}} <span *ngIf="category == 'drinks'">л</span><span *ngIf="category != 'drinks'">гр</span></span></p>
+        </div>
+        <div class="card-bottom">
+          <div class="bottom-card-text">
+            <span style="font-size: 25px; font-weight: 700;">{{product.cost * product.count}} грн </span>
+          </div>
+          <div class="thumb-input-number">
+            <button type="button" class="decrement" (click)="Count(product, false)">-</button>
+            <input [value]="product.count" readonly="" class="product-qty" tabindex="-1" max="999">
+            <button type="button" class="increment" (click)="Count(product, true)">+</button>
+          </div>
+          <div class="button">
+            <a class="btn card-button" (click)="addToBuscket(product)">ЗАМОВИТИ</a>
+          </div>
+        </div>
+        
+        
+  
+      </div>
+    </div>
+
+  </div>
+        
+  </div>
