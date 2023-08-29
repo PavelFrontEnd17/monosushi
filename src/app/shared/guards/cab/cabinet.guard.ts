@@ -1,9 +1,7 @@
 import { Injectable, OnInit } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
-import { AdminAuthComponent } from 'src/app/pages/auth/admin-auth/admin-auth.component';
 import { Observable } from 'rxjs';
-import { ROLE } from '../../constansts/auth.constnts';
-import {HeaderComponent} from "../../../components/header/header.component";
+import { HeaderComponent } from "../../../components/header/header.component";
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +12,7 @@ export class CabinetGuard implements CanActivate {
     private router: Router,
     private header: HeaderComponent
   ) {}
+
 
   canActivate(
     route: ActivatedRouteSnapshot,

@@ -8,7 +8,7 @@ import { IProductResponse, IProductRequest } from '../../interfaces/product/prod
 
 @Injectable({
   providedIn: 'root',
- 
+
 
 })
 
@@ -44,7 +44,6 @@ export class ProductsService {
   update(product: IProductRequest, id: number): Observable<IProductResponse> {
     return this.http.patch<IProductResponse>(`${this.api.products}/${id}`, product)
   }
-
   delete(id: number): Observable<void> {
     return this.http.delete<void>(`${this.api.products}/${id}`)
   }

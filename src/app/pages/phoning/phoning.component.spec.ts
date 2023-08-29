@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PhoningComponent } from './phoning.component';
+import {FormGroup, FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {IMaskModule} from "angular-imask";
 
 describe('PhoningComponent', () => {
   let component: PhoningComponent;
@@ -8,7 +10,11 @@ describe('PhoningComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [PhoningComponent]
+      declarations: [PhoningComponent],
+      imports: [
+        ReactiveFormsModule,
+        IMaskModule
+      ]
     });
     fixture = TestBed.createComponent(PhoningComponent);
     component = fixture.componentInstance;
@@ -17,5 +23,11 @@ describe('PhoningComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should console log', () => {
+    spyOn(component, 'phoneMe').and.callThrough()
+    component.phoneMe()
+    expect(component.phoneMe).toHaveBeenCalled()
   });
 });

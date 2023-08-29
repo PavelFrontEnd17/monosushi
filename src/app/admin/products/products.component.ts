@@ -36,7 +36,7 @@ export class ProductsComponent {
     this.getCategories()
     this.getProducts()
   }
-  
+
   initProductForm(): void{
     this.productForm = this.fb.group({
       name: [null, Validators.required],
@@ -62,7 +62,6 @@ export class ProductsComponent {
 
   getProducts() {
     this.data.get().subscribe(data => { this.productList = data })
-
   }
 
   addProduct(): void {

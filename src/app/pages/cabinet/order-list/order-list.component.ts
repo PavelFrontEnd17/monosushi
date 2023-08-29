@@ -17,13 +17,13 @@ export class OrderListComponent {
     this.getUser()
   }
   public curentUser = JSON.parse(localStorage.getItem('currentUser') as string)
-  public orders = this.curentUser.orders
+  public orders = this.curentUser?.orders
   getUser(){
     this.curentUser = JSON.parse(localStorage.getItem('currentUser') as string)
-    this.orders = this.curentUser.orders
+    this.orders = this.curentUser?.orders
 
   }
 
-  
-  
+
+
 }

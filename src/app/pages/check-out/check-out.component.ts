@@ -1,17 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import InputMask, { InputMaskEventListener } from 'imask/esm/controls/input';
-import { InputMaskElement } from 'imask/esm/index';
-import IMask from 'imask/holder';
-import { ILogin, IUpdate } from 'src/app/shared/interfaces/auth/auth.interfaces';
+
+import { IUpdate } from 'src/app/shared/interfaces/auth/auth.interfaces';
 import { ICutlery, IProductResponse } from 'src/app/shared/interfaces/product/products.interfaces';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatNativeDateModule} from '@angular/material/core';
-import { setDoc } from '@firebase/firestore';
-import { arrayUnion, doc, docData, Firestore, getDoc, getDocFromCache, updateDoc } from '@angular/fire/firestore';
-import { map } from '@firebase/util';
+
+import { arrayUnion, doc, Firestore, updateDoc } from '@angular/fire/firestore';
+
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
@@ -21,9 +15,9 @@ import { Subscription } from 'rxjs';
   selector: 'app-check-out',
   templateUrl: './check-out.component.html',
   styleUrls: ['./check-out.component.scss'],
-  
+
 })
-export class CheckOutComponent implements OnInit {
+export class CheckOutComponent {
 
 
   public busketCount!: number;
@@ -96,11 +90,11 @@ export class CheckOutComponent implements OnInit {
   }
   getInfo() {
 
-    
+
     this.busketItems = JSON.parse(localStorage.getItem('basket') as string)
     this.busketCount = JSON.parse(localStorage.getItem('basket') as string)?.length
     this.sum = 0
-    for (let i = 0; i < this.busketItems.length; i++) {
+    for (let i = 0; i < this.busketItems?.length; i++) {
       this.sum += this.busketItems[i]?.cost * this.busketItems[i]?.count
     }
     this.total = this.sum
@@ -108,17 +102,17 @@ export class CheckOutComponent implements OnInit {
 
 
 
-  
+
 
   initForm(){
     this.checkOutForm = this.fb.group({
       products: [this.busketItems],
-      cutlery: [null, [Validators.required]], 
+      cutlery: [null, [Validators.required]],
       study: [null, [Validators.required]],
       payment: ["cash", [Validators.required]],
       dostavka: ["dostavka", [Validators.required]],
       inAdvance: [null],
-      name: [this.user.fName, [Validators.required, Validators.pattern(/^[А-Яа-яёЁЇїІіЄєҐґ]*$/), Validators.minLength(2)]],
+      name: [this.user?.fName, [Validators.required, Validators.pattern(/^[А-Яа-яёЁЇїІіЄєҐґ]*$/), Validators.minLength(2)]],
       phone: [null, [Validators.required, Validators.minLength(17)]],
       street: [null],
       buildNum: [null],
@@ -135,10 +129,10 @@ export class CheckOutComponent implements OnInit {
   }
 
   addValidators(){
-    this.checkOutForm.get('street')?.setValidators([Validators.required, 
-      Validators.pattern(/^[А-Я][а-яёЁЇїІіЄєҐґ]*$/), 
+    this.checkOutForm.get('street')?.setValidators([Validators.required,
+      Validators.pattern(/^[А-Я][а-яёЁЇїІіЄєҐґ]*$/),
       Validators.minLength(4)])
-    this.checkOutForm.get('buildNum')?.setValidators([Validators.required, 
+    this.checkOutForm.get('buildNum')?.setValidators([Validators.required,
       Validators.pattern(/^[0-9А-Яа-яёЁЇїІіЄєҐґ]*$/)])
     this.checkOutForm.get('entrance')?.setValidators([Validators.pattern(/^[0-9А-Яа-яёЁЇїІіЄєҐґ]*$/)])
     this.checkOutForm.get('apartNum')?.setValidators([Validators.required,Validators.pattern(/^[0-9А-Яа-яёЁЇїІіЄєҐґ]*$/)])
@@ -148,10 +142,10 @@ export class CheckOutComponent implements OnInit {
     this.dostavka = this.checkOutForm.value.dostavka
     console.log(this.checkOutForm.value.dostavka)
     if(this.dostavka=='dostavka'){
-      this.checkOutForm.get('street')?.setValidators([Validators.required, 
-        Validators.pattern(/^[А-Я][а-яёЁЇїІіЄєҐґ]*$/), 
+      this.checkOutForm.get('street')?.setValidators([Validators.required,
+        Validators.pattern(/^[А-Я][а-яёЁЇїІіЄєҐґ]*$/),
         Validators.minLength(4)])
-      this.checkOutForm.get('buildNum')?.setValidators([Validators.required, 
+      this.checkOutForm.get('buildNum')?.setValidators([Validators.required,
         Validators.pattern(/^[0-9А-Яа-яёЁЇїІіЄєҐґ]*$/)])
       this.checkOutForm.get('entrance')?.setValidators([Validators.pattern(/^[0-9А-Яа-яёЁЇїІіЄєҐґ]*$/)])
       this.checkOutForm.get('apartNum')?.setValidators([Validators.required,Validators.pattern(/^[0-9А-Яа-яёЁЇїІіЄєҐґ]*$/)])
@@ -194,6 +188,7 @@ export class CheckOutComponent implements OnInit {
   }
 
   cutleryFunc(){
+    this.cutlery = []
     for(let i =1; i<21; i++){
       if(i<=5){
         let cutl: ICutlery = {
@@ -212,7 +207,7 @@ export class CheckOutComponent implements OnInit {
     console.log(this.cutlery)
   }
 
-  addCutleryCost(event: any){
+  addCutleryCost(){
     if(this.checkOutForm.value.cutlery > 5){
       this.total = this.sum + ((this.checkOutForm.value.cutlery - 5) * 15)
     }else{
@@ -235,7 +230,7 @@ export class CheckOutComponent implements OnInit {
     for (let i = 0; i < this.busketItems.length; i++) {
       this.sum += this.busketItems[i]?.cost * this.busketItems[i]?.count
     }
-    this.total = this.sum 
+    this.total = this.sum
   }
 
   Count(product: IProductResponse, value: boolean) {
@@ -252,25 +247,25 @@ export class CheckOutComponent implements OnInit {
   }
 
 
-  checkDate(event: any){
-    console.log(new Date())
-    let date = this.checkOutForm.value.date
-    let dote = '.'
-    let splitedDate = date.split(dote)
-    if(parseInt(splitedDate[1]) == 2 && parseInt(splitedDate[0]) >= 29){
-      console.log('wrong day 1')
+  // checkDate(event: any){
+  //   console.log(new Date())
+  //   let date = this.checkOutForm.value.date
+  //   let dote = '.'
+  //   let splitedDate = date.split(dote)
+  //   if(parseInt(splitedDate[1]) == 2 && parseInt(splitedDate[0]) >= 29){
+  //     console.log('wrong day 1')
+  //
+  //   }else if(parseInt(splitedDate[0])>31){
+  //     console.log('wrong day 2')
+  //   }else if(parseInt(splitedDate[1])>12){
+  //     console.log('wrong month')
+  //   }
+  //
+  // }
 
-    }else if(parseInt(splitedDate[0])>31){
-      console.log('wrong day 2')
-    }else if(parseInt(splitedDate[1])>12){
-      console.log('wrong month')
-    }
-
-  }
-    
     public dostavka: string = "dostavka"
 
-  
+
   public startComCook = false
   commenting(){this.startComment = !this.startComment}
   cookCommenting(){this.startComCook = !this.startComCook}
@@ -297,9 +292,9 @@ export class CheckOutComponent implements OnInit {
     this.busketCount = 0
 
     localStorage.setItem('basket', JSON.stringify(newBusket))
-    
+
     this.router.navigate([''])
-    
+
   }
 }
 

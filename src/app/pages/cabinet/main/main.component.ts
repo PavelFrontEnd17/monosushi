@@ -19,15 +19,15 @@ export class MainComponent implements OnInit{
 
   ngOnInit(): void {
     this.getPerson()
-    
+
     this.initForm()
   }
 
   initForm(){
     this.form = this.fb.group({
-      name: [this.currentUser.fName , [Validators.required]],
-      sName: [this.currentUser.sName , [Validators.required]],
-      email: [this.currentUser.email, [Validators.required, Validators.email]]
+      name: [this.currentUser?.fName , [Validators.required]],
+      sName: [this.currentUser?.sName , [Validators.required]],
+      email: [this.currentUser?.email, [Validators.required, Validators.email]]
     })
   }
 
@@ -41,6 +41,6 @@ export class MainComponent implements OnInit{
     this.currentUser.sName = this.form.value.sName
     this.currentUser.email = this.form.value.email
     this.data.change(this.currentUser, this.currentUser.id).subscribe(data => {console.log(data)})
-    localStorage.setItem('currentUser', JSON.stringify(this.currentUser))    
+    localStorage.setItem('currentUser', JSON.stringify(this.currentUser))
   }
 }

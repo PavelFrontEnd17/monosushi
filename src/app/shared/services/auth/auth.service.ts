@@ -17,10 +17,7 @@ export class AuthService {
   constructor(
     private http: HttpClient
   ) { }
-  login(credential: ILogin):Observable<any>{
-    console.log(credential)
-    return this.http.get(`${this.api.auth}?email=${credential.email}&&pass=${credential.pass}`)
-  }
+
 
   change(data:IUpdate, id: number){
     console.log(data)

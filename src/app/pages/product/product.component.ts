@@ -15,8 +15,7 @@ import { ProductsService } from 'src/app/shared/services/products/products.servi
 
 export class ProductComponent {
   public products!: IProductResponse[];
-  public productsByCategory!: IProductResponse[]
-  private eventSubscription!: Subscription
+  public eventSubscription: Subscription
   public category!: string
 
  constructor(
@@ -33,15 +32,13 @@ export class ProductComponent {
    })
  }
 
-  
+
  getProducts(){
   this.category = this.ActivatedRoute.snapshot.paramMap.get('category') as string;
   console.log(this.category)
   this.data.getAllByCategory(this.category).subscribe(data => { this.products = data })
   }
-  ngOnInit(): void {}
-  ngOnDestroy(): void {}
-  
+
   Count(product: IProductResponse, value: boolean){
     if(!value && product.count > 1){
       product.count --
@@ -61,12 +58,12 @@ export class ProductComponent {
       } else {
         this.busket?.push(product);
       }
-    } else {  
+    } else {
       this.busket?.push(product);
     }
     localStorage.setItem('basket', JSON.stringify(this.busket));
     this.header.getSum()
     product.count = 1;
   }
-  
+
 }

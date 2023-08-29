@@ -1,9 +1,9 @@
 <div class="orders">
-    <div class="no-orders" *ngIf="curentUser.orders.length == 0">
-        <p class="text" >Поки що ви не зробили жодного 
+    <div class="no-orders" *ngIf="orders?.length == 0">
+        <p class="text" >Поки що ви не зробили жодного
             <span><a class="text-link" [routerLink]="[ '' ]"> перейти в каталог</a></span></p>
     </div>
-    <div class="orders-table" *ngIf="curentUser.orders.length != 0">
+    <div class="orders-table" *ngIf="orders?.length != 0">
         <table>
             <thead>
                 <tr>
@@ -17,15 +17,15 @@
             </thead>
             <tbody *ngFor="let order of orders">
                 <tr >
-                    <td class="orderNum">№ {{orders.indexOf(order)+1}}</td>
-                    <td class="date"> {{order.date}}</td>
-                    <td class="adress" *ngIf="order.dostavka!='samovivoz'">{{order.street}} {{order.buildNum}}</td>
-                    <td class="adress" *ngIf="order.dostavka =='samovivoz'">Самовивіз</td>
-                    <td class="sum"> <b>{{order.totalSum}}</b>  грн</td>
+                    <td class="orderNum">№ {{orders?.indexOf(order)+1}}</td>
+                    <td class="date"> {{order?.date}}</td>
+                    <td class="adress" *ngIf="order?.dostavka !='samovivoz'">{{order.street}} {{order.buildNum}}</td>
+                    <td class="adress" *ngIf="order?.dostavka =='samovivoz'">Самовивіз</td>
+                    <td class="sum"> <b>{{order?.totalSum}}</b>  грн</td>
                     <td class="stat"><ul><li class="status">виконано</li></ul></td>
                     <td class="but"><div class="repeat">Повторити</div></td>
                 </tr>
-                <tr *ngFor="let product of order.products">
+                <tr *ngFor="let product of order?.products">
                     <td class="blank"></td>
                     <td class="name">{{product.name}}</td>
                     <td></td>

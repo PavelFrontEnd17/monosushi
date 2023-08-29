@@ -22,14 +22,10 @@ import { RegComponent } from '../reg/reg.component';
 })
 export class AdminAuthComponent {
   public authForm!: FormGroup;
-  public regForm!: FormGroup;
   public error: boolean = false;
   public loginSub!: Subscription;
   public logIs: boolean = true;
-  public regIs: boolean = false;
-  public passRepeat!:string;
   constructor(
-    private header: HeaderComponent,
     private fb: FormBuilder,
     private accountService: AuthService,
     private router: Router,
@@ -45,19 +41,12 @@ export class AdminAuthComponent {
   }
 
 
-  ngOnDestroy(): void {
-
-  }
-
   initForm() {
     this.authForm = this.fb.group({
       email: [null, [Validators.required, Validators.email]],
       pass: [null, [Validators.required]]
     })
   }
-  // close() {
-  //   this.header.stopLogin()
-  // }
   login() {
     const { email, pass } = this.authForm.value
     this.log(email, pass).then(() => {
@@ -84,10 +73,7 @@ export class AdminAuthComponent {
       console.log(e)
     })
   }
-
-
-close(){
-    this.router.navigate([''])
+close() {
+  this.router.navigate([''])
 }
-
 }

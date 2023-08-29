@@ -29,7 +29,7 @@ export class HeaderComponent {
   public isLogin = false
   public cabinet = CABINET
   public adminUrl = ''
-  
+
   constructor(
     private auth: AuthService,
     private router: Router,
@@ -60,11 +60,11 @@ export class HeaderComponent {
     }
   }
 
-  getInfo(){
-    this.change()
-    this.getSum()
-    this.busketItems = JSON.parse(localStorage.getItem('basket') as string)
-  }
+  // getInfo(){
+  //   this.change()
+  //   this.getSum()
+  //   this.busketItems = JSON.parse(localStorage.getItem('basket') as string)
+  // }
 
   Count(product:IProductResponse, value: boolean){
     if(!value && product.count > 1){
@@ -78,16 +78,16 @@ export class HeaderComponent {
   getSum(){
 
     this.sum = 0
-    for(let i = 0; i < JSON.parse(localStorage.getItem('basket') as string)?.length; i++){
+    for(let i = 0; i < this.busketItems?.length; i++){
       this.sum = this.sum + this.busketItems[i]?.cost * this.busketItems[i]?.count
     }
     console.log(this.sum)
   }
 
   delProduct(product: IProductResponse){
-    
+
     const index = this.busketItems.findIndex(prod => prod.id === product.id);
-    this.busketItems.splice(index, 1) 
+    this.busketItems.splice(index, 1)
     localStorage.setItem('basket', JSON.stringify(this.busketItems));
     console.log(localStorage.getItem('basket'))
     this.getSum()
@@ -99,14 +99,9 @@ export class HeaderComponent {
     this.dialog.open(AuthComponent, {
       panelClass: 'auth-dialog'
     })
-    
+
   }
 
-  stopLogin(){
-    this.IsLogin = false
-    document.querySelector('.user')?.classList.remove('router-active')
-    this.body!.classList.remove('overflow')
-  }
 
   tellMe(){
     this.dialog.open(PhoningComponent, {
@@ -132,7 +127,7 @@ export class HeaderComponent {
       this.loginUrl = ''
       this.isLogin = false
       console.log('gggg')
-      
+
     }
 
   }
@@ -152,7 +147,7 @@ export class HeaderComponent {
       document.querySelector('.cabinet-menu')?.classList.add('cabinet-close')
 
     }
-    
+
   }
   logOut(){
     this.loginUrl = ''

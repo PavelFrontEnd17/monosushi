@@ -10,7 +10,7 @@ import { ProductsService } from 'src/app/shared/services/products/products.servi
   styleUrls: ['./product-info.component.scss']
 })
 export class ProductInfoComponent {
-  public product!: IProductResponse;
+  public product!: IProductResponse
   private eventSubscription!: Subscription
   public id!: number
   constructor(
@@ -20,7 +20,7 @@ export class ProductInfoComponent {
   ) {
     this.eventSubscription = this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        this.getProduct()
+        this.getProduct(parseInt(this.ActivatedRoute.snapshot.paramMap.get('id') as string))
 
       }
     })
@@ -28,13 +28,15 @@ export class ProductInfoComponent {
 
 
   ngOnInit(): void {
-    this.ActivatedRoute.data.subscribe(response => {
-      this.product = response["productInfo"]
-    })
+
+    this.getProduct(parseInt(this.ActivatedRoute.snapshot.paramMap.get('id') as string))
+
+    this.ActivatedRoute.data.subscribe(response => {this.product = response["productInfo"]})
+
+
   }
-  getProduct() {
-    this.id = parseInt(this.ActivatedRoute.snapshot.paramMap.get('id') as string);
-    this.data.getById(this.id).subscribe(data => {
+  getProduct(id: number) {
+    this.data.getById(id).subscribe(data => {
       this.product = data;
     })
   }
@@ -55,7 +57,7 @@ export class ProductInfoComponent {
       busket = JSON.parse(localStorage.getItem('basket') as string);
       if(busket.some(prod => prod.id === product.id)){
         const index = busket.findIndex(prod => prod.id === product.id);
-        busket[index].count += product.count;
+        busket[index].count += product?.count;
       } else {
         busket.push(product);
       }
@@ -64,5 +66,10 @@ export class ProductInfoComponent {
     }
     localStorage.setItem('basket', JSON.stringify(busket));
     product.count = 1;
+
+  }
+  public price!: number
+  productPrice(){
+    this.price = this.product?.cost * this.product?.count
   }
 }

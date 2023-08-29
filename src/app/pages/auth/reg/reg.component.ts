@@ -1,17 +1,10 @@
-import { ThisReceiver } from '@angular/compiler';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+
+import {Component, Injectable } from '@angular/core';
 import { Auth, createUserWithEmailAndPassword } from '@angular/fire/auth';
-import { doc, docData, Firestore } from '@angular/fire/firestore';
+import { doc,  Firestore } from '@angular/fire/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
-import { signInWithEmailAndPassword, UserCredential } from '@firebase/auth';
 import { setDoc } from '@firebase/firestore';
-import { async, Subscription } from 'rxjs';
-import { subscriptionLogsToBeFn } from 'rxjs/internal/testing/TestScheduler';
-import { HeaderComponent } from 'src/app/components/header/header.component';
-import { ROLE } from 'src/app/shared/constansts/auth.constnts';
-import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { AuthComponent } from '../auth.component';
 
 @Component({
@@ -19,15 +12,13 @@ import { AuthComponent } from '../auth.component';
   templateUrl: './reg.component.html',
   styleUrls: ['./reg.component.scss']
 })
+
+@Injectable({ providedIn: "any" })
+
 export class RegComponent {
 
-
-  public authForm!: FormGroup;
   public regForm!: FormGroup;
   public error: boolean = false;
-  public loginSub!: Subscription;
-  public logIs: boolean = true;
-  public regIs: boolean = false;
   public passRepeat!:string;
   constructor(
     private fb: FormBuilder,
@@ -42,11 +33,6 @@ export class RegComponent {
 
   }
 
-
-  ngOnDestroy(): void {
-
-  }
-
   initForm() {
     this.regForm = this.fb.group({
       fName: [null, [Validators.required, Validators.pattern(/^[А-Яа-яёЁЇїІіЄєҐґ]*$/)]],
@@ -56,8 +42,6 @@ export class RegComponent {
       pass: [null, [Validators.required, Validators.pattern(/^[A-Za-z0-9]*$/)]]
     })
   }
-//register
-
 
   Log(){
     this.dialog.open(AuthComponent, {

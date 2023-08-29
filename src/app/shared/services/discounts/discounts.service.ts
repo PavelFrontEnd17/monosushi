@@ -15,12 +15,12 @@ export class DiscountsService {
   private api = {
     discounts: `${this.url}/discounts`,
   }
-  
+
   constructor(private http: HttpClient){}
 
 
   get(): Observable<IDiscountResponse[]> {
-    return this.http.get<IDiscountResponse[]>(this.api.discounts)
+    return this.http.get<IDiscountResponse[]>(this.api?.discounts)
   }
 
   getById(id: number){

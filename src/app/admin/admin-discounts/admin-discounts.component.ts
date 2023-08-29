@@ -3,11 +3,16 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IDiscountRequest, IDiscountResponse} from '../../shared/interfaces/discounts/discounts.intefaces'
 import { deleteObject, getDownloadURL, percentage, ref, Storage, uploadBytesResumable } from '@angular/fire/storage';
 import { DiscountsService } from 'src/app/shared/services/discounts/discounts.service';
+
+
 @Component({
   selector: 'app-admin-discounts',
   templateUrl: './admin-discounts.component.html',
   styleUrls: ['./admin-discounts.component.scss']
 })
+
+
+
 export class AdminDiscountsComponent implements OnInit{
   public discounts!: IDiscountResponse[];
   public editStatus = false
@@ -20,7 +25,6 @@ export class AdminDiscountsComponent implements OnInit{
     private data: DiscountsService,
     private storage: Storage
   ) { }
-
 
     ngOnInit(): void {
       this.getDiscounts()

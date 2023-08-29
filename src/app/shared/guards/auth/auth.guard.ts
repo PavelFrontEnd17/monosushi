@@ -1,6 +1,5 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
-import { AdminAuthComponent } from 'src/app/pages/auth/admin-auth/admin-auth.component';
 import { Observable } from 'rxjs';
 import { ROLE } from '../../constansts/auth.constnts';
 
